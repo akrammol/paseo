@@ -1,0 +1,37 @@
+{
+    "name": "Tag",
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "TagType",
+            "fieldValues": "HASHTAG,DOLLARSIGN"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "person",
+            "otherEntityRelationshipName": "tag",
+            "relationshipName": "person",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "post",
+            "otherEntityRelationshipName": "tag",
+            "relationshipName": "post",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190511133647",
+    "javadoc": "Tag entity.",
+    "entityTableName": "tag",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "paseo",
+    "applications": "*",
+    "microserviceName": "paseo"
+}

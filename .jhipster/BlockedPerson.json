@@ -1,0 +1,30 @@
+{
+    "name": "BlockedPerson",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "person",
+            "otherEntityRelationshipName": "blockedPerson",
+            "relationshipName": "pesron",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "person",
+            "otherEntityRelationshipName": "blockedPerson",
+            "relationshipName": "blockedPerson",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190511133648",
+    "entityTableName": "blocked_person",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "paseo",
+    "applications": "*",
+    "microserviceName": "paseo"
+}

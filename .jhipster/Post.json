@@ -1,0 +1,47 @@
+{
+    "name": "Post",
+    "fields": [
+        {
+            "fieldName": "text",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "commentCount",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "likeCount",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "PostStatus",
+            "fieldValues": "DELETED,ACTIVE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "person",
+            "otherEntityRelationshipName": "post",
+            "relationshipName": "person",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190511133646",
+    "entityTableName": "post",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "paseo",
+    "applications": "*",
+    "microserviceName": "paseo"
+}

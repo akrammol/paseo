@@ -1,0 +1,48 @@
+{
+    "name": "Person",
+    "fields": [
+        {
+            "fieldName": "bio",
+            "javadoc": "The userName attribute.",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "userName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "displayName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "profilePicURL",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "partyId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190511133651",
+    "javadoc": "The Person entity.",
+    "entityTableName": "person",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "paseo",
+    "applications": "*",
+    "microserviceName": "paseo"
+}
