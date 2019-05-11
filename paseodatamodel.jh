@@ -1,0 +1,88 @@
+     
+
+
+entity Comment {
+	text String required,
+    commentCount Long,
+    likeCount Long,
+    status CommentStatus required
+}
+
+entity Post {
+	text String required,
+    commentCount Long,
+    likeCount Long,
+    status PostStatus required
+    }
+
+/**
+ * Tag entity.
+ */
+entity Tag {
+	value TagType
+}
+
+/**
+ * The Person entity.
+ */
+entity Person {
+	/**
+	* The userName attribute.
+	*/
+	bio String,
+	userName String required,
+   	displayName String,
+	email String,
+	profilePicURL String,
+	partyId Long required
+	}
+    
+entity Like {
+   submitTime Instant
+}
+
+entity SavedPost{
+  saveTime Instant
+}
+
+enum PostStatus {
+  DELETED, ACTIVE
+}
+
+enum CommentStatus {
+  DELETED, ACTIVE
+}
+
+enum TagType {
+   HASHTAG , DOLLARSIGN
+}
+relationship ManyToOne {
+    Like{person} to Person,
+    Like{post} to Post,
+    Like{comment} to Comment,
+    Report{person} to Person,
+    Report{post} to Post,
+    Report{comment} to Comment
+    Tag{person} to Person,
+    Tag{post} to Post,
+    SavedPost{person} to Person,
+    SavedPost{post} to Post,
+    Post{person} to Person,
+    BlockedPerson {pesron} to Person,
+    BlockedPerson{blockedPerson} to Person,
+    Comment {replyTo} to Comment
+    }
+
+// defining multiple oneToOne relationships
+// Set pagination options
+paginate Post , Comment with infinite-scroll
+
+// Use Data Transfert Objects (DTO)
+ dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
+
