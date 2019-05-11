@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity BlockedPerson.
+    -->
+    <changeSet id="20190511133648-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="pesron_id"
+                                 baseTableName="blocked_person"
+                                 constraintName="fk_blocked_person_pesron_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="blocked_person_id"
+                                 baseTableName="blocked_person"
+                                 constraintName="blocked_person_blocked_pers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+    </changeSet>
+</databaseChangeLog>
