@@ -32,6 +32,13 @@
             "otherEntityRelationshipName": "comment",
             "relationshipName": "replyTo",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "post",
+            "otherEntityRelationshipName": "comment",
+            "relationshipName": "post",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190511133645",

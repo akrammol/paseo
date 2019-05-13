@@ -2,17 +2,21 @@
     "name": "Tag",
     "fields": [
         {
-            "fieldName": "value",
+            "fieldName": "type",
             "fieldType": "TagType",
             "fieldValues": "HASHTAG,DOLLARSIGN"
+        },
+        {
+            "fieldName": "tagValue",
+            "fieldType": "String"
         }
     ],
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "person",
+            "otherEntityName": "comment",
             "otherEntityRelationshipName": "tag",
-            "relationshipName": "person",
+            "relationshipName": "comment",
             "otherEntityField": "id"
         },
         {

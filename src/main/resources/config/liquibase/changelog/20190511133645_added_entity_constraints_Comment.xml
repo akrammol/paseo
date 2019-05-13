@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_comment"/>
 
+        <addForeignKeyConstraint baseColumnNames="post_id"
+                                 baseTableName="jhi_comment"
+                                 constraintName="fk_jhi_comment_post_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="post"/>
+
     </changeSet>
 </databaseChangeLog>
