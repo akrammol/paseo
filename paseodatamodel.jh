@@ -19,7 +19,8 @@ entity Post {
  * Tag entity.
  */
 entity Tag {
-	value TagType
+	type TagType,
+    tagValue String
 }
 entity BlockedPerson {
 	}
@@ -72,14 +73,15 @@ relationship ManyToOne {
     Report{person} to Person,
     Report{post} to Post,
     Report{comment} to Comment
-    Tag{person} to Person,
+    Tag{comment} to Comment,
     Tag{post} to Post,
     SavedPost{person} to Person,
     SavedPost{post} to Post,
     Post{person} to Person,
     BlockedPerson {pesron} to Person,
     BlockedPerson{blockedPerson} to Person,
-    Comment {replyTo} to Comment
+    Comment {replyTo} to Comment,
+    Comment {post} to Post
     }
 
 // defining multiple oneToOne relationships
