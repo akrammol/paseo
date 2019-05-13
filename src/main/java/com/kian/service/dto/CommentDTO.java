@@ -24,6 +24,8 @@ public class CommentDTO implements Serializable {
 
     private Long replyToId;
 
+    private Long postId;
+
     public Long getId() {
         return id;
     }
@@ -72,6 +74,14 @@ public class CommentDTO implements Serializable {
         this.replyToId = commentId;
     }
 
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -102,6 +112,7 @@ public class CommentDTO implements Serializable {
             ", likeCount=" + getLikeCount() +
             ", status='" + getStatus() + "'" +
             ", replyTo=" + getReplyToId() +
+            ", post=" + getPostId() +
             "}";
     }
 }

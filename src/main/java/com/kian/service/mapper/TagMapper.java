@@ -8,14 +8,14 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Tag} and its DTO {@link TagDTO}.
  */
-@Mapper(componentModel = "spring", uses = {PersonMapper.class, PostMapper.class})
+@Mapper(componentModel = "spring", uses = {CommentMapper.class, PostMapper.class})
 public interface TagMapper extends EntityMapper<TagDTO, Tag> {
 
-    @Mapping(source = "person.id", target = "personId")
+    @Mapping(source = "comment.id", target = "commentId")
     @Mapping(source = "post.id", target = "postId")
     TagDTO toDto(Tag tag);
 
-    @Mapping(source = "personId", target = "person")
+    @Mapping(source = "commentId", target = "comment")
     @Mapping(source = "postId", target = "post")
     Tag toEntity(TagDTO tagDTO);
 

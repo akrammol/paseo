@@ -25,12 +25,15 @@ public class Tag implements Serializable {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "jhi_value")
-    private TagType value;
+    @Column(name = "jhi_type")
+    private TagType type;
+
+    @Column(name = "tag_value")
+    private String tagValue;
 
     @ManyToOne
     @JsonIgnoreProperties("tags")
-    private Person person;
+    private Comment comment;
 
     @ManyToOne
     @JsonIgnoreProperties("tags")
@@ -45,30 +48,43 @@ public class Tag implements Serializable {
         this.id = id;
     }
 
-    public TagType getValue() {
-        return value;
+    public TagType getType() {
+        return type;
     }
 
-    public Tag value(TagType value) {
-        this.value = value;
+    public Tag type(TagType type) {
+        this.type = type;
         return this;
     }
 
-    public void setValue(TagType value) {
-        this.value = value;
+    public void setType(TagType type) {
+        this.type = type;
     }
 
-    public Person getPerson() {
-        return person;
+    public String getTagValue() {
+        return tagValue;
     }
 
-    public Tag person(Person person) {
-        this.person = person;
+    public Tag tagValue(String tagValue) {
+        this.tagValue = tagValue;
         return this;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setTagValue(String tagValue) {
+        this.tagValue = tagValue;
+    }
+
+    public Comment getComment() {
+        return comment;
+    }
+
+    public Tag comment(Comment comment) {
+        this.comment = comment;
+        return this;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
     }
 
     public Post getPost() {
@@ -105,7 +121,8 @@ public class Tag implements Serializable {
     public String toString() {
         return "Tag{" +
             "id=" + getId() +
-            ", value='" + getValue() + "'" +
+            ", type='" + getType() + "'" +
+            ", tagValue='" + getTagValue() + "'" +
             "}";
     }
 }

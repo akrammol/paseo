@@ -12,10 +12,12 @@ public class TagDTO implements Serializable {
 
     private Long id;
 
-    private TagType value;
+    private TagType type;
+
+    private String tagValue;
 
 
-    private Long personId;
+    private Long commentId;
 
     private Long postId;
 
@@ -27,20 +29,28 @@ public class TagDTO implements Serializable {
         this.id = id;
     }
 
-    public TagType getValue() {
-        return value;
+    public TagType getType() {
+        return type;
     }
 
-    public void setValue(TagType value) {
-        this.value = value;
+    public void setType(TagType type) {
+        this.type = type;
     }
 
-    public Long getPersonId() {
-        return personId;
+    public String getTagValue() {
+        return tagValue;
     }
 
-    public void setPersonId(Long personId) {
-        this.personId = personId;
+    public void setTagValue(String tagValue) {
+        this.tagValue = tagValue;
+    }
+
+    public Long getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(Long commentId) {
+        this.commentId = commentId;
     }
 
     public Long getPostId() {
@@ -76,8 +86,9 @@ public class TagDTO implements Serializable {
     public String toString() {
         return "TagDTO{" +
             "id=" + getId() +
-            ", value='" + getValue() + "'" +
-            ", person=" + getPersonId() +
+            ", type='" + getType() + "'" +
+            ", tagValue='" + getTagValue() + "'" +
+            ", comment=" + getCommentId() +
             ", post=" + getPostId() +
             "}";
     }

@@ -38,8 +38,11 @@ import com.kian.domain.enumeration.TagType;
 @SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, PaseoApp.class})
 public class TagResourceIT {
 
-    private static final TagType DEFAULT_VALUE = TagType.HASHTAG;
-    private static final TagType UPDATED_VALUE = TagType.DOLLARSIGN;
+    private static final TagType DEFAULT_TYPE = TagType.HASHTAG;
+    private static final TagType UPDATED_TYPE = TagType.DOLLARSIGN;
+
+    private static final String DEFAULT_TAG_VALUE = "AAAAAAAAAA";
+    private static final String UPDATED_TAG_VALUE = "BBBBBBBBBB";
 
     @Autowired
     private TagRepository tagRepository;
@@ -89,7 +92,8 @@ public class TagResourceIT {
      */
     public static Tag createEntity(EntityManager em) {
         Tag tag = new Tag()
-            .value(DEFAULT_VALUE);
+            .type(DEFAULT_TYPE)
+            .tagValue(DEFAULT_TAG_VALUE);
         return tag;
     }
     /**
@@ -100,7 +104,8 @@ public class TagResourceIT {
      */
     public static Tag createUpdatedEntity(EntityManager em) {
         Tag tag = new Tag()
-            .value(UPDATED_VALUE);
+            .type(UPDATED_TYPE)
+            .tagValue(UPDATED_TAG_VALUE);
         return tag;
     }
 
@@ -125,7 +130,8 @@ public class TagResourceIT {
         List<Tag> tagList = tagRepository.findAll();
         assertThat(tagList).hasSize(databaseSizeBeforeCreate + 1);
         Tag testTag = tagList.get(tagList.size() - 1);
-        assertThat(testTag.getValue()).isEqualTo(DEFAULT_VALUE);
+        assertThat(testTag.getType()).isEqualTo(DEFAULT_TYPE);
+        assertThat(testTag.getTagValue()).isEqualTo(DEFAULT_TAG_VALUE);
     }
 
     @Test
@@ -160,7 +166,8 @@ public class TagResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(tag.getId().intValue())))
-            .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE.toString())));
+            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
+            .andExpect(jsonPath("$.[*].tagValue").value(hasItem(DEFAULT_TAG_VALUE.toString())));
     }
     
     @Test
@@ -174,7 +181,8 @@ public class TagResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(tag.getId().intValue()))
-            .andExpect(jsonPath("$.value").value(DEFAULT_VALUE.toString()));
+            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
+            .andExpect(jsonPath("$.tagValue").value(DEFAULT_TAG_VALUE.toString()));
     }
 
     @Test
@@ -198,7 +206,8 @@ public class TagResourceIT {
         // Disconnect from session so that the updates on updatedTag are not directly saved in db
         em.detach(updatedTag);
         updatedTag
-            .value(UPDATED_VALUE);
+            .type(UPDATED_TYPE)
+            .tagValue(UPDATED_TAG_VALUE);
         TagDTO tagDTO = tagMapper.toDto(updatedTag);
 
         restTagMockMvc.perform(put("/api/tags")
@@ -210,7 +219,8 @@ public class TagResourceIT {
         List<Tag> tagList = tagRepository.findAll();
         assertThat(tagList).hasSize(databaseSizeBeforeUpdate);
         Tag testTag = tagList.get(tagList.size() - 1);
-        assertThat(testTag.getValue()).isEqualTo(UPDATED_VALUE);
+        assertThat(testTag.getType()).isEqualTo(UPDATED_TYPE);
+        assertThat(testTag.getTagValue()).isEqualTo(UPDATED_TAG_VALUE);
     }
 
     @Test
